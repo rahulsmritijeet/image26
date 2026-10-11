@@ -3270,7 +3270,6 @@
           `<article class="blk"><h4>Teacher${s.te.length > 1 ? "s" : ""} in-charge</h4>${tc}<div class="ctime">${esc(s.ct || CT)}</div></article>` +
           `<article class="blk"><h4>Student(s) in-charge</h4><div class="tc"><b>${esc(s.st)}</b></div></article>` +
           `</div>` +
-          (s.nt ? `<div class="note">⚠ ${esc(s.nt)}</div>` : "") +
           `<div class="dn">${n > 1 ? `<button data-i="${pv.idx}"><small>← PREVIOUS SUBEVENT</small>${esc(pv.t)}</button><button data-i="${nx.idx}"><small>NEXT SUBEVENT →</small>${esc(nx.t)}</button>` : ""}</div>`;
         const sd = $("#sdet");
         sd.classList.remove("fade");
