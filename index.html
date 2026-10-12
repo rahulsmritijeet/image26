@@ -1444,6 +1444,23 @@
         transform: none;
         pointer-events: auto;
       }
+            .grpl {
+        position: relative;
+        z-index: 5;
+        text-align: center;
+        margin-top: 12px;
+        font-family: var(--fd);
+        font-size: clamp(1.3rem, 3.4vw, 2.2rem);
+        color: #fff;
+        line-height: 1.1;
+      }
+      .grpl::before { content: "{ "; }
+      .grpl::after { content: " }"; }
+      .grpl::before,
+      .grpl::after {
+        color: var(--fr);
+        font-size: 1.3em;
+      }
       @media (max-width: 850px) {
         nav a.x {
           display: none;
@@ -1592,7 +1609,7 @@
           <li>
             All schools are requested to confirm their participation in the
             event(s) by filling the respective registration form provided in the
-            event details by <b>Thursday, 22 October 2026</b>.
+            event details by <b>Thursday, 24 October 2026</b>.
           </li>
           <li>
             All the registration forms can be viewed at a glance at
@@ -1687,6 +1704,7 @@
           <div class="credits">
             <b>Brochure Designing</b><br />Mokshi Khari · Avnii Sancheti
             <br /><br />
+            <b>Creative Lead</b></b><br />Aarush Varma
             <b>Website Development</b><br />Rahul Smritijeet
           </div>
         </div>
@@ -1747,6 +1765,12 @@
             aria-label="Search events"
             autocomplete="off"
           />
+
+        <div class="grpl" id="grpl" hidden></div>
+
+        <div
+          class="stage"
+          id="sstage"
           <div class="res" hidden></div>
         </div>
         <div
@@ -3505,6 +3529,8 @@
         $("#sbg").dataset.ev = mid;
         $("#sbgt").textContent = m.n;
         $("#sh2").innerHTML = "Subevents of <b>" + esc(m.n) + "</b>";
+        $("#grpl").hidden = mid != "navrang";
+        $("#grpl").textContent = "Aesthetic Moves";
         $("#scar").style.setProperty("--fr", m.fr);
         tt.textContent = "↑ Subevent carousel";
         tt.style.setProperty("--tb", m.fr);
