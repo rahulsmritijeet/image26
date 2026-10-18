@@ -1666,6 +1666,19 @@ nav b a.brand i {
     background: #03111afa;
   }
 }
+      .reg.dc {
+  background: #5865f2;
+  color: #fff;
+  margin-left: 10px;
+}
+.reg.dc:hover {
+  background: #4752c4;
+}
+@media (max-width: 760px) {
+  .reg.dc {
+    margin-left: 0;
+  }
+}
       nav b a.brand {
   display: inline-flex;
   align-items: center;
@@ -1713,12 +1726,6 @@ nav b a.brand:hover .brand-logo {
       target="_blank"
       rel="noopener"
       >BROCHURE</a
-    >
-    <a
-      href="https://discord.gg/yxFWZP23X"
-      target="_blank"
-      rel="noopener"
-      >DISCORD</a
     >
   </div>
 </nav>
@@ -2823,6 +2830,7 @@ nav b a.brand:hover .brand-logo {
           te: [["Ms. Shivani Narang", "shivanin.csn", "9818832899"]],
           st: "Siddhant Ganguly and Hitansh Chaudhary",
           f: "hwRYZk44EZnJTrnA6",
+          dc: "https://discord.gg/yxFWZP23X",
         },
         {
           m: "techno",
@@ -3108,6 +3116,7 @@ nav b a.brand:hover .brand-logo {
           te: [["Mr. Vivek Kumar Singh", "viveks.csn", "9719899975"]],
           st: "Samarth Aggarwal and Rahul Smritijeet",
           f: "bwFr3NDf9FwEmfEW9",
+          dc: "https://discord.gg/yxFWZP23X",
         },
       ];
 
@@ -3446,7 +3455,7 @@ nav b a.brand:hover .brand-logo {
             ? `<article class="blk w"><h4>${esc(s.th.h)}</h4><ul>${li(s.th.l)}</ul></article>`
             : "") +
           `<article class="blk w"><h4>Rules</h4><ul>${li(s.rules)}</ul></article>` +
-          `<article class="blk"><h4>Registration</h4>${s.reg.length ? `<ul>${li(s.reg)}</ul>` : ""}<a class="reg" target="_blank" rel="noopener" href="https://forms.gle/${s.f}">REGISTER →</a></article>` +
+          `<article class="blk"><h4>Registration</h4>${s.reg.length ? `<ul>${li(s.reg)}</ul>` : ""}<a class="reg" target="_blank" rel="noopener" href="https://forms.gle/${s.f}">REGISTER →</a>${s.dc ? `<a class="reg dc" target="_blank" rel="noopener" href="${s.dc}">JOIN DISCORD →</a>` : ""}</article>` +
           `<article class="blk"><h4>Judgement criteria</h4><ul>${li(s.crit)}</ul></article>` +
           `<article class="blk"><h4>Teacher${s.te.length > 1 ? "s" : ""} in-charge</h4>${tc}<div class="ctime">${esc(s.ct || CT)}</div></article>` +
           `<article class="blk"><h4>Student(s) in-charge</h4><div class="tc"><b>${esc(s.st)}</b></div></article>` +
