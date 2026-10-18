@@ -930,6 +930,22 @@
         animation: cin 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
         animation-delay: calc(var(--k, 0) * 80ms);
       }
+      nav b a.brand {
+  margin: 0;
+  color: inherit;
+  border-bottom: 0;
+  letter-spacing: inherit;
+}
+nav b a.brand:hover {
+  color: inherit;
+  border-color: transparent;
+}
+nav b a.brand i {
+  font-family: "Tiro Devanagari Hindi";
+  color: var(--cream);
+  font-style: normal;
+  margin-left: 10px;
+}
       @keyframes cin {
         from {
           opacity: 0;
@@ -1454,13 +1470,6 @@
         color: #fff;
         line-height: 1.1;
       }
-      .grpl::before { content: "{ "; }
-      .grpl::after { content: " }"; }
-      .grpl::before,
-      .grpl::after {
-        color: var(--fr);
-        font-size: 1.3em;
-      }
       @media (max-width: 850px) {
         nav a.x {
           display: none;
@@ -1543,23 +1552,148 @@
         #toTop { font-size: 0; padding: 12px 18px; }
         #toTop::after { content: "↑ Top"; font: 700 0.74rem Poppins; letter-spacing: 0.14em; }
       }
+      /* ============ HAMBURGER + MOBILE MENU ============ */
+#burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+#burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.25s;
+}
+#burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+#burger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+#burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 850px) {
+  nav a.x {
+    display: inline-block; /* show CONTACT inside the mobile menu */
+  }
+}
+
+@media (max-width: 760px) {
+  #burger {
+    display: flex;
+  }
+  #navlinks {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    background: #03111afa;
+    border-top: 1px solid #c99d3466;
+    border-bottom: 2px solid var(--gold);
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition:
+      max-height 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+      padding 0.45s,
+      opacity 0.3s,
+      transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+      visibility 0s linear 0.45s;
+  }
+  #navlinks.open {
+    max-height: 420px;
+    padding: 10px 20px 18px;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition:
+      max-height 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+      padding 0.45s,
+      opacity 0.3s,
+      transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+      visibility 0s;
+  }
+  #navlinks a {
+    margin: 0;
+    padding: 14px 4px;
+    font-size: 0.85rem;
+    letter-spacing: 0.16em;
+    border-bottom: 1px solid #ffffff1a;
+    opacity: 0;
+    transform: translateX(-16px);
+    transition:
+      opacity 0.3s,
+      transform 0.35s,
+      color 0.2s;
+  }
+  #navlinks.open a {
+    opacity: 1;
+    transform: none;
+  }
+  #navlinks.open a:nth-child(1) { transition-delay: 0.05s; }
+  #navlinks.open a:nth-child(2) { transition-delay: 0.1s; }
+  #navlinks.open a:nth-child(3) { transition-delay: 0.15s; }
+  #navlinks.open a:nth-child(4) { transition-delay: 0.2s; }
+  #navlinks.open a:nth-child(5) { transition-delay: 0.25s; }
+  #navlinks a:last-child {
+    border-bottom: 0;
+  }
+  nav.menu-open {
+    background: #03111afa;
+  }
+}
     </style>
   </head>
   <body class="pg-home">
     <nav id="nav">
-      <b>IMAGE 2026<i>जिज्ञासा</i></b>
-      <div>
-        <a href="#/home" data-p="home">HOME</a
-        ><a href="#/events" data-p="events">EVENTS</a
-        ><a class="x" href="#/home/contact">CONTACT</a
-        ><a
-          href="https://drive.google.com/file/d/12Rl01FkvsPOXu3QZZc0kPghkbkcrh8UR/view?usp=sharing"
-          target="_blank"
-          rel="noopener"
-          >BROCHURE</a
-        >
-      </div>
-    </nav>
+  <b><a href="#/home" class="brand">IMAGE 2026<i>जिज्ञासा</i></a></b>
+  <button
+    id="burger"
+    aria-label="Toggle menu"
+    aria-expanded="false"
+    aria-controls="navlinks"
+  >
+    <span></span><span></span><span></span>
+  </button>
+  <div id="navlinks">
+    <a href="#/home" data-p="home">HOME</a>
+    <a href="#/events" data-p="events">EVENTS</a>
+    <a class="x" href="#/home/contact">CONTACT</a>
+    <a
+      href="https://drive.google.com/file/d/12Rl01FkvsPOXu3QZZc0kPghkbkcrh8UR/view?usp=sharing"
+      target="_blank"
+      rel="noopener"
+      >BROCHURE</a
+    >
+    <a
+      href="https://discord.gg/yxFWZP23X"
+      target="_blank"
+      rel="noopener"
+      >DISCORD</a
+    >
+  </div>
+</nav>
 
     <!-- ============ HOME ============ -->
     <main id="pg-home">
@@ -3590,6 +3724,34 @@
           }));
       }
       addEventListener("scroll", onScroll, { passive: true });
+      /* ================= MOBILE MENU ================= */
+      document.querySelector("a.brand").addEventListener("click", () => {
+  if (location.hash === "#/home" || location.hash === "") {
+    scrollTo({ top: 0, behavior: "smooth" });
+  }
+});
+const burger = $("#burger"),
+  navLinks = $("#navlinks");
+function setMenu(open) {
+  burger.classList.toggle("open", open);
+  navLinks.classList.toggle("open", open);
+  nav.classList.toggle("menu-open", open);
+  burger.setAttribute("aria-expanded", open);
+}
+burger.onclick = () => setMenu(!navLinks.classList.contains("open"));
+navLinks.addEventListener("click", (e) => {
+  if (e.target.closest("a")) setMenu(false);
+});
+document.addEventListener("click", (e) => {
+  if (!nav.contains(e.target)) setMenu(false);
+});
+addEventListener("keydown", (e) => {
+  if (e.key == "Escape") setMenu(false);
+});
+addEventListener("resize", () => {
+  if (innerWidth > 760) setMenu(false);
+});
+addEventListener("hashchange", () => setMenu(false));
       route();
     </script>
   </body>
